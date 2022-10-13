@@ -1,0 +1,24 @@
+# YOLOv6 Hyperparameter Evolution Results
+# Best generation: 14
+# Last generation: 196
+#    metrics/precision,       metrics/recall,      metrics/mAP_0.5, metrics/mAP_0.5:0.95
+#              0.69595,                 0.72,              0.72463,              0.28364
+
+lr0: 0.0026100000000000003
+lrf: 0.10534
+momentum: 0.8907700000000001
+weight_decay: 0.00042
+warmup_epochs: 1.5545
+warmup_momentum: 0.47012
+warmup_bias_lr: 0.04143
+hsv_h: 0.0138
+hsv_s: 0.45726999999999995
+hsv_v: 0.46399999999999997
+degrees: 0.23926999999999998
+translate: 0.22928
+scale: 0.9
+shear: 0.536
+flipud: 0.01015
+fliplr: 0.5
+mosaic: 1.0
+mixup: 0.2038

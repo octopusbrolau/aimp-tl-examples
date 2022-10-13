@@ -1,0 +1,10 @@
+names: [fish, fad]
+nc: 2
+
+train: ../../data/tunas_dataset/images/train  # train images 
+val: ../../data/tunas_dataset/images/val  # val images 
+test: ../../data/tunas_dataset/images/val
+
+
+# whether it is coco dataset, only coco dataset should be set to True.
+is_coco: False

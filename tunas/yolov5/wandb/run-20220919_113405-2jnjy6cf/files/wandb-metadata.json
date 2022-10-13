@@ -1,0 +1,39 @@
+{
+    "os": "Linux-4.4.0-186-generic-x86_64-with-glibc2.10",
+    "python": "3.8.5",
+    "heartbeatAt": "2022-09-19T03:34:07.656743",
+    "startedAt": "2022-09-19T03:34:05.652763",
+    "docker": null,
+    "gpu": "GeForce RTX 3090",
+    "gpu_count": 8,
+    "cpu_count": 48,
+    "cuda": null,
+    "args": [
+        "--weights",
+        "../../data/weights/yolov5s.pt",
+        "--cfg",
+        "../configs/yolov5s-transformer.yaml",
+        "--data",
+        "../configs/tunas_data.yaml",
+        "--epochs",
+        "100",
+        "--batch-size",
+        "16",
+        "--project",
+        "../../data/runs/",
+        "--name",
+        "yolov5s-transformer"
+    ],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/ultralytics/yolov5",
+        "commit": "fda8aa551d0b732153c2e0848dd6abd887a41cd1"
+    },
+    "email": "test@test.com",
+    "root": "/ws/tunas/project/tuans/yolov5",
+    "host": "6c40bd492d77",
+    "username": "root",
+    "executable": "/opt/conda/bin/python"
+}

@@ -1,0 +1,211 @@
+YOLOv5 temporarily requires wandb version 0.12.10 or below. Some features may not work as expected.
+                 from  n    params  module                                  arguments
+  0                -1  1      3520  models.common.Conv                      [3, 32, 6, 2, 2]
+  1                -1  1     18560  models.common.Conv                      [32, 64, 3, 2]
+  2                -1  1     18816  models.common.C3                        [64, 64, 1]
+  3                -1  1     73984  models.common.Conv                      [64, 128, 3, 2]
+  4                -1  2    115712  models.common.C3                        [128, 128, 2]
+  5                -1  1    295424  models.common.Conv                      [128, 256, 3, 2]
+  6                -1  3    625152  models.common.C3                        [256, 256, 3]
+  7                -1  1   1180672  models.common.Conv                      [256, 512, 3, 2]
+  8                -1  1   1182976  models.common.C3TR                      [512, 512, 1]
+  9                -1  1    656896  models.common.SPPF                      [512, 512, 5]
+ 10                -1  1    131584  models.common.Conv                      [512, 256, 1, 1]
+ 11                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 12           [-1, 6]  1         0  models.common.Concat                    [1]
+ 13                -1  1    361984  models.common.C3                        [512, 256, 1, False]
+ 14                -1  1     33024  models.common.Conv                      [256, 128, 1, 1]
+ 15                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 16           [-1, 4]  1         0  models.common.Concat                    [1]
+ 17                -1  1     90880  models.common.C3                        [256, 128, 1, False]
+ 18                -1  1    147712  models.common.Conv                      [128, 128, 3, 2]
+ 19          [-1, 14]  1         0  models.common.Concat                    [1]
+ 20                -1  1    296448  models.common.C3                        [256, 256, 1, False]
+ 21                -1  1    590336  models.common.Conv                      [256, 256, 3, 2]
+ 22          [-1, 10]  1         0  models.common.Concat                    [1]
+ 23                -1  1   1182720  models.common.C3                        [512, 512, 1, False]
+ 24      [17, 20, 23]  1     18879  models.yolo.Detect                      [2, [[0, 1, 2, 3, 4, 5], [0, 1, 2, 3, 4, 5], [0, 1, 2, 3, 4, 5]], [128, 256, 512]]
+YOLOv5s-transformer summary: 217 layers, 7025279 parameters, 7025279 gradients, 15.7 GFLOPs
+Transferred 330/348 items from ../../data/weights/yolov5s.pt
+[34m[1mAMP: [39m[22mchecks passed ✅
+[34m[1moptimizer:[39m[22m SGD(lr=0.01) with parameter groups 55 weight(decay=0.0), 65 weight(decay=0.0005), 60 bias
+WARNING ⚠️ DP not recommended, use torch.distributed.run for best DDP Multi-GPU results.
+See Multi-GPU Tutorial at https://github.com/ultralytics/yolov5/issues/475 to get started.
+[34m[1malbumentations: [39m[22mBlur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01), CLAHE(p=0.01, clip_limit=(1, 4.0), tile_grid_size=(8, 8))
+[34m[1mtrain: [39m[22mScanning '/ws/tunas/project/data/tunas_dataset/labels/train' images and labels...1093 found, 0 missing, 0 empty, 0 corrupt: 100%|██████████| 1093/1093 [00:00<00:00, 3311.49it/s]
+[34m[1mtrain: [39m[22mNew cache created: /ws/tunas/project/data/tunas_dataset/labels/train.cache
+[34m[1mval: [39m[22mScanning '/ws/tunas/project/data/tunas_dataset/labels/val' images and labels...403 found, 0 missing, 0 empty, 0 corrupt: 100%|██████████| 403/403 [00:00<00:00, 12217.42it/s]
+[34m[1mval: [39m[22mNew cache created: /ws/tunas/project/data/tunas_dataset/labels/val.cache
+[34m[1mAutoAnchor: [39m[22m0.01 anchors/target, 0.004 Best Possible Recall (BPR). Anchors are a poor fit to dataset ⚠️, attempting to improve...
+[34m[1mAutoAnchor: [39m[22mWARNING ⚠️ Extremely small objects found: 1 of 1129 labels are <3 pixels in size
+[34m[1mAutoAnchor: [39m[22mRunning kmeans for 9 anchors on 1129 points...
+[34m[1mAutoAnchor: [39m[22mEvolving anchors with Genetic Algorithm: fitness = 0.7865: 100%|██████████| 1000/1000 [00:00<00:00, 1535.77it/s]
+[34m[1mAutoAnchor: [39m[22mthr=0.25: 0.9991 best possible recall, 5.42 anchors past thr
+[34m[1mAutoAnchor: [39m[22mn=9, img_size=640, metric_all=0.366/0.787-mean/best, past_thr=0.509-mean: 39,20, 64,28, 82,47, 152,30, 249,28, 261,47, 292,88, 515,52, 375,180
+[34m[1mAutoAnchor: [39m[22mDone ✅ (optional: update model *.yaml to use these anchors in the future)
+Plotting labels to ../../data/runs/yolov5s-transformer/labels.jpg...
+Image sizes 640 train, 640 val
+Using 6 dataloader workers
+Logging results to [1m../../data/runs/yolov5s-transformer
+Starting training for 100 epochs...
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       0/99      0.74G       0.12    0.03844    0.03039          7        640: 100%|██████████| 69/69 [01:16<00:00,  1.11s/it]
+
+
+
+
+
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 13/13 [00:12<00:00,  1.03it/s]
+                   all        403        422   0.000245     0.0649   0.000147   3.95e-05
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       1/99      1.21G     0.1187    0.03614    0.02999         13        640: 100%|██████████| 69/69 [00:34<00:00,  1.97it/s]
+
+
+
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 13/13 [00:07<00:00,  1.69it/s]
+                   all        403        422   0.000328       0.08   0.000223   5.34e-05
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       2/99      1.21G     0.1168    0.03332    0.02893          8        640: 100%|██████████| 69/69 [00:35<00:00,  1.96it/s]
+
+
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 13/13 [00:05<00:00,  2.20it/s]
+                   all        403        422   0.000349     0.0901   0.000267   5.85e-05
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       3/99      1.21G     0.1131    0.03044    0.02745          9        640: 100%|██████████| 69/69 [00:36<00:00,  1.91it/s]
+
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 13/13 [00:04<00:00,  3.11it/s]
+                   all        403        422   0.000342     0.0929   0.000239   5.42e-05
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       4/99      1.21G     0.1091    0.02812    0.02582          6        640: 100%|██████████| 69/69 [00:35<00:00,  1.92it/s]
+
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 13/13 [00:03<00:00,  3.96it/s]
+                   all        403        422   0.000421      0.118   0.000373   6.59e-05
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       5/99      1.21G     0.1055     0.0266    0.02436          9        640: 100%|██████████| 69/69 [00:36<00:00,  1.89it/s]
+                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 13/13 [00:02<00:00,  4.60it/s]
+                   all        403        422    0.00035      0.103   0.000271   5.54e-05
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       6/99      1.21G     0.1038    0.02666    0.02329         27        640:  16%|█▌        | 11/69 [00:03<00:18,  3.17it/s]
+Traceback (most recent call last):
+  File "train.py", line 630, in <module>
+    main(opt)
+  File "train.py", line 526, in main
+    train(opt.hyp, opt, device, callbacks)
+  File "train.py", line 307, in train
+    pred = model(imgs)  # forward
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/modules/module.py", line 881, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/parallel/data_parallel.py", line 167, in forward
+    outputs = self.parallel_apply(replicas, inputs, kwargs)
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/parallel/data_parallel.py", line 177, in parallel_apply
+    return parallel_apply(replicas, inputs, kwargs, self.device_ids[:len(replicas)])
+  File "/opt/conda/lib/python3.8/site-packages/torch/nn/parallel/parallel_apply.py", line 78, in parallel_apply
+    thread.join()
+  File "/opt/conda/lib/python3.8/threading.py", line 1011, in join
+    self._wait_for_tstate_lock()
+  File "/opt/conda/lib/python3.8/threading.py", line 1027, in _wait_for_tstate_lock
+    elif lock.acquire(block, timeout):
+KeyboardInterrupt
