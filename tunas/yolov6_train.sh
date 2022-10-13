@@ -1,3 +1,4 @@
+#!/bin/bash
 cd YOLOv6
 
 models=('yolov6t' 'yolov6t' 'yolov6s' 'yolov6m' 'yolov6l')
