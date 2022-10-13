@@ -17,6 +17,6 @@ tqdm>=4.64.0
 addict>=2.4.0
 pycocotools>=2.0
 thop  # FLOPs computation
-tensorboard>=2.7.0
+# tensorboard>=2.7.0
 
 
