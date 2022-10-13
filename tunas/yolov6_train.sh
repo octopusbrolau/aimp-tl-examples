@@ -1,7 +1,7 @@
 #!/bin/bash
 cd YOLOv6
 
-models=('yolov6t' 'yolov6t' 'yolov6s' 'yolov6m' 'yolov6l')
+models=('yolov6n' 'yolov6t' 'yolov6s' 'yolov6m' 'yolov6l')
 device=${2:-0}
 batch_size=${3:-16}
 epochs=${4:-10}
