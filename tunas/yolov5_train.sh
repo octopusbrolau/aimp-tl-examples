@@ -1,5 +1,5 @@
 
-models=('yolov5n' 'yolov5s' 'yolov5s-T7'  'yolov5m' 'yolov5m-T7' 'yolov5l' 'yolov5x')
+models=('yolov5n' 'yolov5s' 'yolov5s-T7' 'yolov5m' 'yolov5m-T7' 'yolov5l' 'yolov5x')
 device=${2:-0}
 batch_size=${3:-16}
 epochs=${4:-10}
