@@ -11,7 +11,7 @@ import cv2
 import numpy as np
 import math
 import torch
-from torch.cuda import amp
+# from torch.cuda import amp
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.tensorboard import SummaryWriter
 
@@ -149,20 +149,21 @@ class Trainer:
             write_tbimg(self.tblogger, self.vis_train_batch, self.step + self.max_stepnum * self.epoch, type='train')
 
         # forward
-        with amp.autocast(enabled=self.device != 'cpu'):
-            preds, s_featmaps = self.model(images)
-            if self.args.distill:
-                with torch.no_grad():
-                    t_preds, t_featmaps = self.teacher_model(images)
-                temperature = self.args.temperature
-                total_loss, loss_items = self.compute_loss_distill(preds, t_preds, s_featmaps, t_featmaps, targets, \
+        #with amp.autocast(enabled=self.device != 'cpu'):
+        preds, s_featmaps = self.model(images)
+        if self.args.distill:
+            with torch.no_grad():
+                t_preds, t_featmaps = self.teacher_model(images)
+            temperature = self.args.temperature
+            total_loss, loss_items = self.compute_loss_distill(preds, t_preds, s_featmaps, t_featmaps, targets, \
                                                                    epoch_num, self.max_epoch, temperature)
-            else:
-                total_loss, loss_items = self.compute_loss(preds, targets, epoch_num)
-            if self.rank != -1:
-                total_loss *= self.world_size
+        else:
+            total_loss, loss_items = self.compute_loss(preds, targets, epoch_num)
+        if self.rank != -1:
+            total_loss *= self.world_size
         # backward
-        self.scaler.scale(total_loss).backward()
+        total_loss.backward()
+        #self.scaler.scale(total_loss).backward()
         self.loss_items = loss_items
         self.update_optimizer()
     
@@ -285,7 +286,7 @@ class Trainer:
         self.warmup_stepnum = max(round(self.cfg.solver.warmup_epochs * self.max_stepnum), 1000) if self.args.quant is False else 0
         self.scheduler.last_epoch = self.start_epoch - 1
         self.last_opt_step = -1
-        self.scaler = amp.GradScaler(enabled=self.device != 'cpu')
+        #self.scaler = amp.GradScaler(enabled=self.device != 'cpu')
 
         self.best_ap, self.ap, self.fi, self.best_fitness = 0.0, 0.0, 0.0, 0.0
         self.best_stop_strong_aug_ap = 0.0
@@ -359,8 +360,9 @@ class Trainer:
                 if 'momentum' in param:
                     param['momentum'] = np.interp(curr_step, [0, self.warmup_stepnum], [self.cfg.solver.warmup_momentum, self.cfg.solver.momentum])
         if curr_step - self.last_opt_step >= self.accumulate:
-            self.scaler.step(self.optimizer)
-            self.scaler.update()
+#             self.scaler.step(self.optimizer)
+#             self.scaler.update()
+            self.optimizer.step()
             self.optimizer.zero_grad()
             if self.ema:
                 self.ema.update(self.model)
