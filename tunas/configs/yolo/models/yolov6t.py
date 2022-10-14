@@ -23,12 +23,8 @@ model = dict(
         out_indices=[17, 20, 23],
         strides=[8, 16, 32],
         iou_type='giou',
-        use_dfl=True,#False,
-        reg_max=16, #0, #if use_dfl is False, please set reg_max to 0
-        distill_weight={
-            'class': 2.0,
-            'dfl': 1.0,
-        }
+        use_dfl=False,#False,
+        reg_max=0, #0, #if use_dfl is False, please set reg_max to 0
     )
 )
 
